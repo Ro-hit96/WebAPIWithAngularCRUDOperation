@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+//
 builder.Services.AddCors(options => options.AddDefaultPolicy(
     builder => builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader()));
 var connectionString = builder.Configuration.GetConnectionString("defaultConection");
@@ -18,6 +19,8 @@ builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 builder.Services.AddScoped<IStudentService, StudentService>();
+builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddScoped<IEmployeeServices,EmployeeService>();
 
 builder.Services.AddSwaggerGen(c =>
 {
